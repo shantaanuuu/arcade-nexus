@@ -1,47 +1,57 @@
-# Arcade Nexus — Low-Poly Game Hub
+# Arcade Nexus — 3D & Retro Game Hub
 
-A lightweight browser-based 3D arcade hub built with **Three.js**, **JavaScript** and **Vite**.
+A lightweight, high-performance browser-based arcade hub built with **Three.js**, **Libretro WebAssembly**, **JavaScript**, and **Vite**.
 
 ## Status
 
-All five cabinets are playable using lightweight procedural Three.js scenes. Scores, coins, play counts, and achievements persist in browser localStorage.
+All six arcade cabinets are fully playable:
+- **5 Procedural 3D Games** built directly in Three.js.
+- **1 Retro Game Vault** powered by Libretro WebAssembly (`nostalgist`), featuring built-in GBA & NES homebrew games plus support for custom ROM uploads.
+- Player stats, coins, high scores, and 7 gameplay achievements persist in `localStorage`.
+
+## Included Games & Cabinets
+
+1. **Neon Rush:** 🏎️ Highway runner. A/D or arrows steer; Shift triggers nitro boost.
+2. **Target Ops:** 🎯 Accuracy shooter. Mouse aim and click to shoot floating practice drones.
+3. **Sky Jumper:** ☁️ 3D platformer. A/D moves; Space jumps between floating islands to reach the portal.
+4. **Shadow Protocol:** 🔐 Cyber infiltration. WASD moves; E interacts; Q/E/R/F completes the terminal hack.
+5. **Cyber Dash:** ⚡ Futuristic endless sprint. Arrow keys switch lanes; Space jumps hazards.
+6. **Retro Vault:** 👾 Full-fledged Libretro emulator cabinet:
+   - **🗡️ Anguna: Warriors of Faith** (Game Boy Advance RPG)
+   - **🐱 Sushi The Cat** (Game Boy Advance Platformer)
+   - **🛡️ Alwa's Awakening** (NES 8-bit Demo)
+   - **📁 Custom ROM Loader:** Upload any `.gba`, `.nes`, `.sfc`, `.gbc`, or `.zip` file from your device.
+   - **Controls:** D-Pad (Arrow keys), A (X), B (Z), Start (Enter), Select (Shift), L/R (Q/W).
+   - **Features:** In-browser state saving (`💾 Save`), loading (`📂 Load`), reset (`🔄 Reset`), and fullscreen (`⛶`).
 
 ## Requirements
-Node.js 20.19+ or 22.12+ (compatible with Vite 7), npm, and a modern browser.
+Node.js 20+ or 22+, npm, and any modern web browser.
 
-## Run locally
+## Run Locally
 ```bash
 npm install
 npm run dev
 ```
-Open the localhost address printed in your terminal.
+Open `http://localhost:5173` in your browser.
 
-## Build and preview
+## Build and Preview
 ```bash
 npm run build
 npm run preview
 ```
-Deploy the generated `dist/` folder to Netlify or Vercel (build command: `npm run build`, output directory: `dist`).
 
-## Controls
+## Free 1-Click Deployment (Zero Server Cost)
 
-- **Neon Rush:** A/D or arrows steer; Shift triggers nitro.
-- **Target Ops:** Mouse aim and click shoot moving practice drones.
-- **Sky Jumper:** A/D moves; Space jumps between islands.
-- **Shadow Protocol:** WASD moves; E interacts; Q/E/R/F completes the hack.
-- **Cyber Dash:** arrows change lanes; Space jumps.
-- **Shared:** P pauses and R restarts.
+This project is 100% client-side and requires no backend servers, databases, or VPS:
 
-## Features
+### Vercel
+1. Push your repository to GitHub.
+2. Import the repo in [Vercel](https://vercel.com).
+3. The included [vercel.json](file:///c:/apps/arcade-nexus/vercel.json) automatically configures the required cross-origin headers for WebAssembly SharedArrayBuffer.
+4. Click **Deploy**.
 
-- Five responsive game cards, live player statistics, and real gameplay-driven achievements.
-- Raycasting-based shooting with timed accuracy scoring.
-- Procedural platform jumping, gravity, landing checks, collectibles, and finish portal.
-- Escape state progression: keycard → terminal → QTE hack → exit door.
-- Progressive runner/car hazards, local scores, lightweight Web Audio, and cleanup of loops, listeners, canvases, geometry, and materials when switching games.
-
-## Architecture
-`src/main.js` contains the shared game lifecycle plus five independent game classes. The base class owns the renderer, delta-time loop, resize handling, listeners, and cleanup.
-
-## Note for portfolios
-This is a prototype, not an Unreal Engine project. Do not claim Unreal Engine, rigging, MetaHuman, or skeletal animation features. The current car game uses procedural transforms and simple geometric models.
+### Netlify
+1. Connect your repo in [Netlify](https://netlify.com).
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+4. The included `public/_headers` handles cross-origin headers automatically.

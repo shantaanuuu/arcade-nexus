@@ -1,8 +1,10 @@
 node_modules/
 dist/
+cloud-game-master/
 .env
 .env.*
 !.env.example
 .DS_Store
 *.log
 .vscode/
+

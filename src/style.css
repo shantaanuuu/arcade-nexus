@@ -1,2 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Outfit:wght@700;800;900&display=swap');
 :root{font-family:DM Sans,sans-serif;color:#173d39;background:#f5f7f0}*{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}.shell{min-height:100vh;background:radial-gradient(circle at 90% 2%,#ffefca,transparent 24%),linear-gradient(145deg,#f9faf5,#e4f1ec)}header{display:flex;justify-content:space-between;align-items:center;padding:18px max(24px,calc((100vw - 1180px)/2));background:#ffffffc9;border-bottom:1px solid #dce8df}.brand{font:900 24px Outfit;border:0;background:none;color:#1c5a50}.brand b{color:#ef8f50}.pill,.body small{font-size:11px;font-weight:900;letter-spacing:.8px;background:#e3f1e8;color:#347261;border-radius:40px;padding:9px 13px}main{max-width:1180px;margin:auto;padding:42px 24px 70px}.hero{display:flex;justify-content:space-between;align-items:center;gap:30px;padding:44px 52px;border-radius:30px;color:white;background:linear-gradient(125deg,#17584e,#3a7c6d);box-shadow:0 20px 45px #1451432a}.hero>div:last-child{font-size:130px;filter:drop-shadow(0 15px 0 #123d36)}.hero small{font-weight:900;letter-spacing:2px;color:#f8d494}.hero h1{font:900 clamp(42px,6vw,70px)/1 Outfit;margin:15px 0;letter-spacing:-3px}.hero p{max-width:460px;line-height:1.6;color:#def0e9}.action{border:0;border-radius:12px;background:#ffc263;color:#422d14;font-weight:900;padding:13px 19px;box-shadow:0 3px 0 #d78d38}.action:hover{background:#ffd27f;transform:translateY(-1px)}h2{font:900 29px Outfit;margin:42px 0 20px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}article{background:#fff;border:1px solid #e0e9e1;overflow:hidden;border-radius:21px;box-shadow:0 8px 25px #234a3712;transition:.2s}article:hover{transform:translateY(-4px)}.art{height:142px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#d9ebdf,#dcecf9);font-size:75px;position:relative}.art em{position:absolute;top:12px;right:12px;background:#fffbe;border-radius:30px;padding:6px 9px;font-size:10px;font-style:normal;font-weight:900}.body{padding:18px}.body h3{font:900 22px Outfit;margin:11px 0 5px}.body p{min-height:38px;font-size:13px;color:#647873;margin:0 0 14px}.body .action{width:100%}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:30px 0}.stats div{background:#1d5d53;color:#fff;border-radius:15px;padding:18px}.stats small{display:block;font-size:10px;font-weight:900;color:#b6d8ca}.stats b{font:900 30px Outfit}.ach{display:flex;gap:10px;flex-wrap:wrap;padding:23px;border-radius:20px;background:#fff;border:1px solid #e1e9df}.ach h2{width:100%;margin:0 0 4px}.ach span{border:1px solid #d8e1dc;border-radius:30px;padding:8px 11px;color:#87948f;font-size:13px}.ach .got{color:#176b54;background:#ecfaf1;border-color:#a0d9b5}footer{text-align:center;padding:24px;color:#82928d;font-size:13px}.gamehead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}.gamehead h1{font:900 30px Outfit;margin:0}.back{border:0;background:none;color:#286657;font-weight:900;padding:8px 0}.gamehead>#hud{display:flex;gap:8px;flex-wrap:wrap}.gamehead>#hud span{padding:9px 11px;border-radius:10px;background:#fff;font-weight:800;font-size:13px;box-shadow:0 3px 10px #1232}.stage{height:min(67vh,590px);min-height:390px;position:relative;overflow:hidden;border-radius:24px;box-shadow:0 18px 45px #235c5933}.stage canvas{display:block;width:100%;height:100%}.overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;color:white;background:#122f37c9}.overlay[hidden]{display:none}.overlay h1{font:900 clamp(33px,6vw,58px) Outfit;margin:0}.overlay p{max-width:490px;line-height:1.6}.help{text-align:center;color:#607670;font-size:14px}@media(max-width:800px){.cards{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding:34px}.hero>div:last-child{display:none}}@media(max-width:520px){main{padding:25px 16px}.cards{grid-template-columns:1fr}.hero{padding:29px 23px}.pill{display:none}.stage{height:60vh}}
+
+/* Retro Arcade Styles */
+.retro-screen{width:100%;height:100%;position:relative;background:#0d151c;display:flex;flex-direction:column;color:#fff}
+.retro-menu{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow-y:auto;text-align:center}
+.retro-menu h2{font:900 clamp(24px,4vw,32px) Outfit;margin:0 0 6px;color:#ffc263}
+.retro-menu p{color:#98b0b8;margin:0 0 18px;max-width:520px;font-size:13px;line-height:1.5}
+.retro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;width:100%;max-width:680px;margin-bottom:16px}
+.retro-card{background:#16232e;border:1px solid #273b4b;border-radius:15px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;transition:.18s}
+.retro-card:hover{transform:translateY(-3px);border-color:#ffc263;background:#1a2b38}
+.retro-card .icon{font-size:32px}
+.retro-card h4{margin:0;font:800 15px Outfit;color:#fff}
+.retro-card .tag{font-size:10px;font-weight:900;padding:3px 8px;border-radius:10px;background:#203b3d;color:#7ae6c4}
+.retro-upload{border:2px dashed #2f4557;border-radius:14px;padding:12px 18px;background:#111b24;display:flex;align-items:center;gap:10px;cursor:pointer;color:#8ba5b3;font-size:13px;transition:.15s}
+.retro-upload:hover{border-color:#ffc263;color:#ffc263}
+.retro-upload input{display:none}
+.retro-viewport{width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center;background:#05070a}
+.retro-viewport canvas{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated;image-rendering:crisp-edges}
+.retro-toolbar{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;background:rgba(13,21,28,0.92);backdrop-filter:blur(8px);padding:6px 10px;border-radius:30px;border:1px solid rgba(255,255,255,0.15)}
+.retro-btn{background:none;border:none;color:#d6eae3;font-size:12px;font-weight:800;padding:6px 11px;border-radius:20px;display:flex;align-items:center;gap:5px;transition:.15s}
+.retro-btn:hover{background:#ffc263;color:#122f37}
+.retro-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;color:#ffc263;font:800 18px Outfit}
+.retro-controls-hint{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:11px;color:#859da5}
+.retro-controls-hint span{background:#182834;padding:4px 8px;border-radius:6px;border:1px solid #233747}
+
+/* Shooter & Gameplay Polish */
+.target-crosshair{position:absolute;width:40px;height:40px;border:2px solid rgba(255,80,90,0.85);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:transform .04s ease,border-color .08s ease,box-shadow .08s ease;z-index:10;display:none;box-shadow:0 0 14px rgba(255,80,90,0.6)}
+.target-crosshair::before{content:'';position:absolute;top:50%;left:-8px;right:-8px;height:2px;background:rgba(255,80,90,0.85);transform:translateY(-50%)}
+.target-crosshair::after{content:'';position:absolute;left:50%;top:-8px;bottom:-8px;width:2px;background:rgba(255,80,90,0.85);transform:translateX(-50%)}
+.target-crosshair.lock{border-color:#ffd24d;box-shadow:0 0 20px #ffd24d;transform:translate(-50%,-50%) scale(1.2)}
+.target-crosshair.lock::before,.target-crosshair.lock::after{background:#ffd24d}
+.target-crosshair.shot{transform:translate(-50%,-50%) scale(0.85)}
+
+.floating-popup{position:absolute;font:900 18px Outfit,sans-serif;color:#ffd24d;text-shadow:0 2px 8px rgba(0,0,0,0.8);pointer-events:none;animation:floater .7s ease-out forwards;z-index:15}
+@keyframes floater{0%{opacity:1;transform:translate(-50%,0) scale(0.85)}100%{opacity:0;transform:translate(-50%,-40px) scale(1.35)}}
+
+.hud-pill{display:inline-flex;align-items:center;gap:6px}
+.hud-bar{display:inline-block;width:64px;height:8px;background:#2d423e;border-radius:10px;overflow:hidden;vertical-align:middle}
+.hud-fill{height:100%;background:linear-gradient(90deg,#ffb74d,#ff5252);transition:width .1s linear}
+.hud-hearts{color:#ff4757;letter-spacing:2px;font-size:15px}
+
+
