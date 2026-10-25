@@ -1,15 +1,16 @@
 import * as THREE from 'three';
 import { Nostalgist } from 'nostalgist';
+import { icons } from './icons.js';
 import './style.css';
 
 const app = document.querySelector('#app');
 const data = [
-  ['neon', 'Neon Rush', '🏎️', 'Racing', 'A/D or arrows · Shift nitro'],
-  ['target', 'Target Ops', '🎯', 'Shooter', 'Mouse click · hit drones'],
-  ['sky', 'Sky Jumper', '☁️', 'Platformer', 'A/D · Space jump'],
-  ['shadow', 'Shadow Protocol', '🔐', 'Escape', 'A/D · E interact'],
-  ['dash', 'Cyber Dash', '⚡', 'Runner', 'Arrows · Space jump'],
-  ['retro', 'Retro Vault', '👾', 'Classic', 'GBA & NES · D-Pad + Z/X/Enter']
+  ['neon', 'Neon Rush', 'car', 'Three.js 3D', 'A/D or Arrows steer · Shift Nitro', 'Speed Highway Simulator'],
+  ['target', 'Target Ops', 'crosshair', 'Three.js 3D', 'Mouse aim · Left-click fire', 'Precision Cyber Drone Range'],
+  ['sky', 'Sky Jumper', 'platformer', 'Three.js 3D', 'WASD / Arrows · Space double-jump', 'Floating Celestial Islands'],
+  ['shadow', 'Shadow Protocol', 'lock', 'Three.js 3D', 'WASD move · E interact · QERF hack', 'Terminal Security Infiltration'],
+  ['dash', 'Cyber Dash', 'bolt', 'Three.js 3D', 'A/D steer · Space jump hazards', 'Endless Supersonic Sprint'],
+  ['retro', 'Retro Vault', 'retro', 'WebAssembly', 'D-Pad Arrows · Z/X Action · Enter Start', 'Libretro Hardware Console Emulator']
 ];
 
 const store = {
@@ -61,60 +62,111 @@ function home() {
   app.innerHTML = `
     <div class="shell">
       <header>
-        <button class="brand">ARCADE <b>NEXUS</b></button>
-        <span class="pill">✦ 3D & RETRO GAME HUB</span>
+        <div class="brand-wrap">
+          <div class="brand-logo-mark">${icons.gamepad}</div>
+          <button class="brand">ARCADE <span>NEXUS</span></button>
+        </div>
+        <div class="system-status">
+          <span class="status-dot"></span>
+          <span>SYSTEM ONLINE // 6 PROTOCOLS</span>
+        </div>
       </header>
       <main>
         <section class="hero">
-          <div>
-            <small>PLAY / CREATE / REPEAT</small>
-            <h1>Small worlds.<br>Big momentum.</h1>
-            <p>Six handcrafted arcade experiences — from procedural Three.js worlds to classic GBA & NES retro legends.</p>
-            <button class="action" data-go="retro">👾 Open Retro Vault</button>
+          <div class="hero-content">
+            <div class="hero-tag">${icons.activity} <span>Modern Web Simulation Platform</span></div>
+            <h1>Engineered for Speed.<br><em>Procedural 3D & WebAssembly.</em></h1>
+            <p>Six zero-latency arcade environments running entirely client-side. Real-time Three.js procedural graphics and native Libretro C-emulation compiled to WebAssembly.</p>
+            <div class="hero-actions">
+              <button class="btn-primary" data-go="neon">
+                ${icons.play}
+                <span>Launch Neon Rush</span>
+              </button>
+              <button class="btn-secondary" data-go="retro">
+                ${icons.retro}
+                <span>Open Retro Vault</span>
+              </button>
+            </div>
           </div>
-          <div>🎮</div>
+          <div class="hero-visual">
+            <div class="hero-graphic-badge">
+              ${icons.gamepad}
+            </div>
+          </div>
         </section>
 
-        <h2>Choose your challenge</h2>
-        <section class="cards">
+        <div class="section-head">
+          <h2>Simulation Cabinets</h2>
+          <small>SELECT PROTOCOL</small>
+        </div>
+
+        <section class="cards-grid">
           ${data.map(g => `
-            <article>
-              <div class="art">${g[2]}<em>${g[3]}</em></div>
-              <div class="body">
-                <small>${g[3].toUpperCase()}</small>
-                <h3>${g[1]}</h3>
-                <p>${g[4]}</p>
-                <button class="action" data-go="${g[0]}">Play now →</button>
+            <article class="game-card">
+              <div class="card-banner">
+                <span class="card-system-tag">${g[3]}</span>
+                <div class="card-icon-container">
+                  ${icons[g[2]] || icons.gamepad}
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-meta">${g[5]}</div>
+                <h3 class="card-title">${g[1]}</h3>
+                <p class="card-desc">${g[4]}</p>
+                <button class="card-action" data-go="${g[0]}">
+                  <span>Enter Simulator</span>
+                  ${icons.arrowRight}
+                </button>
               </div>
             </article>
           `).join('')}
         </section>
 
-        <section class="stats">
-          <div><small>GAMES PLAYED</small><b>${n}</b></div>
-          <div><small>COINS</small><b>${progress.coins}</b></div>
-          <div><small>BEST SCORE</small><b>${Math.max(0, ...Object.values(progress.best))}</b></div>
-          <div><small>ACHIEVEMENTS</small><b>${progress.ach.length}/7</b></div>
+        <div class="section-head">
+          <h2>Telemetry & Progress</h2>
+          <small>REAL-TIME PERSISTENCE</small>
+        </div>
+
+        <section class="stats-strip">
+          <div class="stat-box">
+            <div class="stat-label">${icons.activity} <span>Simulations Run</span></div>
+            <div class="stat-val">${n}</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">${icons.coins} <span>Nexus Credits</span></div>
+            <div class="stat-val">${progress.coins}</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">${icons.bolt} <span>High Score</span></div>
+            <div class="stat-val">${Math.max(0, ...Object.values(progress.best))}</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">${icons.trophy} <span>Achievements</span></div>
+            <div class="stat-val">${progress.ach.length}/7</div>
+          </div>
         </section>
 
-        <section class="ach">
-          <h2>Achievement shelf</h2>
-          ${[
-            'First Drive',
-            'Sharpshooter',
-            'Sky Explorer',
-            'Escape Artist',
-            'Marathon Runner',
-            'Retro Gamer',
-            'Arcade Master'
-          ].map(x => `
-            <span class="${progress.ach.includes(x) ? 'got' : ''}">
-              ${progress.ach.includes(x) ? '✦' : '○'} ${x}
-            </span>
-          `).join('')}
+        <section class="achievements-panel">
+          <h3>${icons.trophy} <span>Honor Protocol / Achievements</span></h3>
+          <div class="ach-chips">
+            ${[
+              'First Drive',
+              'Sharpshooter',
+              'Sky Explorer',
+              'Escape Artist',
+              'Marathon Runner',
+              'Retro Gamer',
+              'Arcade Master'
+            ].map(x => `
+              <span class="ach-chip ${progress.ach.includes(x) ? 'unlocked' : ''}">
+                ${progress.ach.includes(x) ? icons.check : icons.shield}
+                <span>${x}</span>
+              </span>
+            `).join('')}
+          </div>
         </section>
       </main>
-      <footer>Built with Three.js · Libretro WebAssembly · Vite · Free & Instant Deploy</footer>
+      <footer>ARCADE NEXUS · THREE.JS GRAPHICS · LIBRETRO WEBASSEMBLY · ZERO BACKEND DEPENDENCY</footer>
     </div>
   `;
 
@@ -134,14 +186,20 @@ function launch(id) {
   app.innerHTML = `
     <div class="shell">
       <header>
-        <button class="brand" id="back">ARCADE <b>NEXUS</b></button>
-        <span class="pill">${d[1].toUpperCase()}</span>
+        <div class="brand-wrap">
+          <div class="brand-logo-mark">${icons.gamepad}</div>
+          <button class="brand" id="back">ARCADE <span>NEXUS</span></button>
+        </div>
+        <div class="system-status">
+          <span class="status-dot"></span>
+          <span>SIMULATION: ${d[1].toUpperCase()}</span>
+        </div>
       </header>
       <main>
         <div class="gamehead">
-          <div>
-            <button class="back" id="hub">← Back to hub</button>
-            <h1>${d[2]} ${d[1]}</h1>
+          <div class="game-title-bar">
+            <button class="btn-back" id="hub">${icons.arrowLeft} <span>Back to Hub</span></button>
+            <h1>${d[1]}</h1>
           </div>
           <div id="hud"></div>
         </div>
@@ -149,7 +207,7 @@ function launch(id) {
           <div class="overlay" id="overlay">
             <h1>${d[1]}</h1>
             <p id="instruction"></p>
-            <button class="action" id="start">Start game →</button>
+            <button class="btn-primary" id="start">${icons.play} <span>Start Simulation</span></button>
           </div>
         </div>
         <p class="help" id="help"></p>
@@ -523,11 +581,10 @@ class Neon extends Base {
     save();
 
     this.hud([
-      `🏎️ ${(speed * 3.6) | 0} km/h`,
-      `<span class="hud-pill">⚡ <span class="hud-bar"><span class="hud-fill" style="width:${this.nitro | 0}%"></span></span></span>`,
-      `🪙 ${this.runCoins}`,
-      `Score: ${this.score | 0}`,
-      `Best: ${progress.best.neon}`
+      `<span class="hud-pill">${icons.car} ${(speed * 3.6) | 0} KM/H</span>`,
+      `<span class="hud-pill">${icons.bolt} <span class="hud-bar"><span class="hud-fill" style="width:${this.nitro | 0}%"></span></span></span>`,
+      `<span class="hud-pill">${icons.coins} ${this.runCoins}</span>`,
+      `<span class="hud-pill">SCORE ${this.score | 0}</span>`
     ]);
   }
 }
@@ -714,10 +771,10 @@ class Target extends Base {
     }
 
     this.hud([
-      `🎯 Score: ${this.score}`,
-      `⏱️ ${Math.ceil(Math.max(0, this.left))}s`,
-      `🔥 Combo: ${this.combo > 1 ? `x${Math.min(4, Math.floor(this.combo / 2) + 1)}` : '—'}`,
-      `📊 Accuracy: ${acc}%`
+      `<span class="hud-pill">${icons.crosshair} SCORE ${this.score}</span>`,
+      `<span class="hud-pill">${icons.activity} TIME ${Math.ceil(Math.max(0, this.left))}S</span>`,
+      `<span class="hud-pill">${icons.bolt} COMBO ${this.combo > 1 ? `x${Math.min(4, Math.floor(this.combo / 2) + 1)}` : '1X'}</span>`,
+      `<span class="hud-pill">ACCURACY ${acc}%</span>`
     ]);
   }
 
@@ -924,11 +981,17 @@ class Sky extends Base {
     const distToPortal = Math.max(0, Math.round(this.p.position.z - (-50)));
     save();
 
+    const heartsSvg = Array.from({ length: 3 }, (_, idx) => `
+      <svg style="width:14px;height:14px;color:${idx < this.lives ? '#f43f5e' : '#334155'};fill:${idx < this.lives ? '#f43f5e' : 'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+      </svg>
+    `).join('');
+
     this.hud([
-      `<span class="hud-hearts">${'❤️'.repeat(Math.max(0, this.lives))}</span>`,
-      `💎 Crystals: ${this.crystalsFound}/7`,
-      `📍 Goal: ${distToPortal}m`,
-      `Jumps: ${this.jumpsLeft}`
+      `<span class="hud-pill" style="gap:4px">${heartsSvg}</span>`,
+      `<span class="hud-pill">${icons.trophy} CRYSTALS ${this.crystalsFound}/7</span>`,
+      `<span class="hud-pill">PORTAL ${distToPortal}M</span>`,
+      `<span class="hud-pill">JUMPS ${this.jumpsLeft}</span>`
     ]);
   }
 }
@@ -1084,30 +1147,30 @@ const RETRO_CATALOG = [
     id: 'anguna',
     name: 'Anguna: Warriors of Faith',
     system: 'Game Boy Advance',
-    badge: 'GBA',
+    badge: 'GBA · 32-BIT',
     core: 'mgba',
     file: '/games/anguna.gba',
-    icon: '🗡️',
-    desc: 'Top-down action RPG adventure with dungeons, swords & magic.'
+    iconKey: 'shield',
+    desc: 'Action RPG with dungeon crawling, swordcraft, and ancient relics.'
   },
   {
     id: 'sushi',
     name: 'Sushi The Cat',
     system: 'Game Boy Advance',
-    badge: 'GBA',
+    badge: 'GBA · 32-BIT',
     core: 'mgba',
     file: '/games/sushi.gba',
-    icon: '🐱',
-    desc: 'Charming, fast-paced arcade platformer catching fish and treats.'
+    iconKey: 'bolt',
+    desc: 'Charming, fast-paced arcade platformer catching treats.'
   },
   {
     id: 'alwa',
     name: "Alwa's Awakening (Demo)",
     system: 'Nintendo Entertainment System',
-    badge: 'NES',
+    badge: 'NES · 8-BIT',
     core: 'fceumm',
     file: '/games/alwa.nes',
-    icon: '🛡️',
+    iconKey: 'platformer',
     desc: 'Challenging 8-bit retro platformer with magic staff puzzles.'
   }
 ];
@@ -1128,9 +1191,12 @@ class Retro {
 
   intro() {
     const overlay = document.querySelector('#overlay');
-    if (overlay) overlay.hidden = true; // Retro mode manages its own rich interactive shelf
+    if (overlay) overlay.hidden = true;
     this.renderMenu();
-    this.hud(['👾 Retro Vault', 'Select a Game', '3 Built-in + Custom ROMs']);
+    this.hud([
+      `<span class="hud-pill">${icons.retro} RETRO CONSOLE VAULT</span>`,
+      '<span class="hud-pill">HARDWARE EMULATOR</span>'
+    ]);
   }
 
   hud(a) {
@@ -1141,31 +1207,32 @@ class Retro {
   renderMenu() {
     this.container.innerHTML = `
       <div class="retro-menu">
-        <h2>Retro Game Vault</h2>
-        <p>Zero servers, zero latency. High-performance Libretro WebAssembly emulation running locally in your browser.</p>
+        <h2>Retro Console Vault</h2>
+        <p>Zero backend servers. Native Libretro WebAssembly hardware emulation compiled to run directly in your browser.</p>
 
         <div class="retro-grid">
           ${RETRO_CATALOG.map(g => `
             <div class="retro-card" data-retro-id="${g.id}">
-              <div class="icon">${g.icon}</div>
+              <div class="card-icon-wrap">${icons[g.iconKey] || icons.retro}</div>
               <h4>${g.name}</h4>
               <span class="tag">${g.badge}</span>
-              <small style="color:#7f97a2;font-size:11px;">${g.desc}</small>
+              <small style="color:#94a3b8;font-size:11px;">${g.desc}</small>
             </div>
           `).join('')}
         </div>
 
         <label class="retro-upload">
-          📁 <span><b>Load Custom ROM</b> (.gba, .nes, .sfc, .gbc, .zip)</span>
+          ${icons.upload}
+          <span><b>Load Custom ROM File</b> (.gba, .nes, .sfc, .gbc, .zip)</span>
           <input type="file" id="retro-file-input" accept=".gba,.nes,.sfc,.smc,.gb,.gbc,.zip,.bin" />
         </label>
 
         <div class="retro-controls-hint">
-          <span>🎮 D-Pad: Arrows</span>
-          <span>🅰️ A Button: X</span>
-          <span>🅱️ B Button: Z</span>
-          <span>▶️ Start: Enter</span>
-          <span>⏸️ Select: Shift</span>
+          <span>D-Pad: Arrows</span>
+          <span>A Button: X</span>
+          <span>B Button: Z</span>
+          <span>Start: Enter</span>
+          <span>Select: Shift</span>
         </div>
       </div>
     `;
@@ -1201,7 +1268,7 @@ class Retro {
           badge,
           core,
           file,
-          icon: '💾'
+          iconKey: 'retro'
         });
       };
     }
@@ -1211,8 +1278,8 @@ class Retro {
     this.activeGame = game;
     this.container.innerHTML = `
       <div class="retro-loading">
-        <div>⚡ Loading ${game.name}...</div>
-        <small style="font-size:12px;color:#859da5;font-family:DM Sans,sans-serif;">Initializing WebAssembly Core (${game.core})...</small>
+        <div>Loading ${game.name}...</div>
+        <small style="font-size:12px;color:#94a3b8;font-family:var(--font-mono);">Initializing WebAssembly Core (${game.core})...</small>
       </div>
     `;
 
@@ -1225,11 +1292,11 @@ class Retro {
       this.container.innerHTML = `
         <div class="retro-viewport" id="retro-viewport">
           <div class="retro-toolbar">
-            <button class="retro-btn" id="btn-save" title="Save game state">💾 Save</button>
-            <button class="retro-btn" id="btn-load" title="Load game state">📂 Load</button>
-            <button class="retro-btn" id="btn-restart" title="Restart game">🔄 Reset</button>
-            <button class="retro-btn" id="btn-switch" title="Choose another game">🕹️ Library</button>
-            <button class="retro-btn" id="btn-fullscreen" title="Toggle Fullscreen">⛶ Fullscreen</button>
+            <button class="retro-btn" id="btn-save" title="Save game state">${icons.save} <span>Save</span></button>
+            <button class="retro-btn" id="btn-load" title="Load game state">${icons.folder} <span>Load</span></button>
+            <button class="retro-btn" id="btn-restart" title="Restart game">${icons.reset} <span>Reset</span></button>
+            <button class="retro-btn" id="btn-switch" title="Choose another game">${icons.gamepad} <span>Library</span></button>
+            <button class="retro-btn" id="btn-fullscreen" title="Toggle Fullscreen">${icons.expand} <span>Fullscreen</span></button>
           </div>
         </div>
       `;
@@ -1262,9 +1329,9 @@ class Retro {
       save();
 
       this.hud([
-        `${game.icon} ${game.name}`,
-        `Core: ${game.badge}`,
-        'Controls: Arrows + Z/X/Enter'
+        `<span class="hud-pill">${icons.retro} ${game.name.toUpperCase()}</span>`,
+        `<span class="hud-pill">${game.badge}</span>`,
+        '<span class="hud-pill">CONTROLS: ARROWS + Z/X/ENTER</span>'
       ]);
 
       const btnSave = this.container.querySelector('#btn-save');
